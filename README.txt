@@ -32,7 +32,7 @@ Sample Commands
 1) Help
 2) Count
 3) Add
-3 -output /Users/JLong/Dropbox/DimensionData/OpsourceSimpleApp/src/test/resources/testServer.xml
+3 -output testServer.xml
 4) Edit
 4 -id 8ebc025a-1ad1-4a54-aa6e-18f45dae6244 UpdateMe
 5) Delete
