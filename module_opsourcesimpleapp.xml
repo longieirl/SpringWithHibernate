@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_opsourcesimpleapp" default="compile.module.opsourcesimpleapp">
+  <dirname property="module.opsourcesimpleapp.basedir" file="${ant.file.module_opsourcesimpleapp}"/>
+  
+  <property name="module.jdk.home.opsourcesimpleapp" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.opsourcesimpleapp" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.opsourcesimpleapp" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.opsourcesimpleapp" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="opsourcesimpleapp.output.dir" value="${module.opsourcesimpleapp.basedir}/target/classes"/>
+  <property name="opsourcesimpleapp.testoutput.dir" value="${module.opsourcesimpleapp.basedir}/target/test-classes"/>
+  
+  <path id="opsourcesimpleapp.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="opsourcesimpleapp.module.production.classpath">
+    <path refid="${module.jdk.classpath.opsourcesimpleapp}"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.6.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.6.release.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.classpath"/>
+  </path>
+  
+  <path id="opsourcesimpleapp.runtime.production.module.classpath">
+    <pathelement location="${opsourcesimpleapp.output.dir}"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.6.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.6.release.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.classpath"/>
+  </path>
+  
+  <path id="opsourcesimpleapp.module.classpath">
+    <path refid="${module.jdk.classpath.opsourcesimpleapp}"/>
+    <pathelement location="${opsourcesimpleapp.output.dir}"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.6.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.6.release.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.10.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.1.classpath"/>
+    <path refid="library.maven:_org.easymock:easymock:3.2.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.3.classpath"/>
+  </path>
+  
+  <path id="opsourcesimpleapp.runtime.module.classpath">
+    <pathelement location="${opsourcesimpleapp.testoutput.dir}"/>
+    <pathelement location="${opsourcesimpleapp.output.dir}"/>
+    <path refid="library.maven:_joda-time:joda-time:2.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.0.6.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.0.6.release.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.10.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.1.classpath"/>
+    <path refid="library.maven:_org.easymock:easymock:3.2.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.opsourcesimpleapp">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.opsourcesimpleapp">
+    <patternset refid="excluded.from.module.opsourcesimpleapp"/>
+  </patternset>
+  
+  <path id="opsourcesimpleapp.module.sourcepath">
+    <dirset dir="${module.opsourcesimpleapp.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.opsourcesimpleapp" depends="compile.module.opsourcesimpleapp.production,compile.module.opsourcesimpleapp.tests" description="Compile module OpsourceSimpleApp"/>
+  
+  <target name="compile.module.opsourcesimpleapp.production" depends="register.custom.compilers" description="Compile module OpsourceSimpleApp; production classes">
+    <mkdir dir="${opsourcesimpleapp.output.dir}"/>
+    <javac2 destdir="${opsourcesimpleapp.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.opsourcesimpleapp}/javac">
+      <compilerarg line="${compiler.args.opsourcesimpleapp}"/>
+      <bootclasspath refid="opsourcesimpleapp.module.bootclasspath"/>
+      <classpath refid="opsourcesimpleapp.module.production.classpath"/>
+      <src refid="opsourcesimpleapp.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.opsourcesimpleapp"/>
+    </javac2>
+    
+    <copy todir="${opsourcesimpleapp.output.dir}">
+      <fileset dir="${module.opsourcesimpleapp.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.opsourcesimpleapp.tests" depends="register.custom.compilers,compile.module.opsourcesimpleapp.production" description="compile module OpsourceSimpleApp; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.opsourcesimpleapp" description="cleanup module">
+    <delete dir="${opsourcesimpleapp.output.dir}"/>
+    <delete dir="${opsourcesimpleapp.testoutput.dir}"/>
+  </target>
+</project>

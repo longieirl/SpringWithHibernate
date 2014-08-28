@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       profile="dev,test">
+
+    <context:property-placeholder location="classpath:persistence-hsqldb.properties"/>
+
+    <!-- Hibernate Session Factory  -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <description>
+            LocalSessionFactoryBean is a Spring factory bean that produces a local Hibernate SessionFactory instance
+        </description>
+        <property name="dataSource" ref="devDataSource"/>
+
+        <!-- Hibernate configuration -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+            </props>
+        </property>
+
+        <!-- The packages that contain Hibernate model classes -->
+        <property name="packagesToScan">
+            <list>
+                <value>com.opserver.simpleapp.model</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Data Source -->
+    <bean id="devDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <description>
+            Datasource settings for HSQL DB
+        </description>
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:file:testdb;shutdown=true"/>
+        <property name="username" value="SA"/>
+        <property name="password" value=""/>
+        <property name="initialSize" value="1"/>
+        <property name="maxActive" value="5"/>
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxOpenPreparedStatements" value="10"/>
+    </bean>
+    <!-- Hibernate transaction management -->
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="persistenceExceptionTranslationPostProcessor"
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+</beans>
